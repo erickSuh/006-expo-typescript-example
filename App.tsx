@@ -1,17 +1,18 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import ListExample from "./src/components/ListExample";
+import store from './src/store';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <ListExample />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList } from "react-native";
 
 import { ApplicationState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,16 +16,12 @@ const ListExample: React.FC = (props) => {
     dispatch(loadRequest());
   }, [dispatch]);
 
-  console.log('repositories', repositories);
-
   return (
-    <div>
-      <ul>
-        {repositories.map((repo) => (
-          <li>{repo.name}</li>
-        ))}
-      </ul>
-    </div>
+    <View>
+      <FlatList data={repositories.map((repo) => ({ key: repo.name, name: repo.name }))}
+        renderItem={({ item }) => <Text>{item.name}</Text>}>
+      </FlatList>
+    </View>
   );
 };
 

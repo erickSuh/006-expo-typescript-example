@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from "react-native";
+import React, { useEffect } from 'react';
+import { View, Text, FlatList } from 'react-native';
 
-import { ApplicationState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
+import { ApplicationState } from '../../store';
 
 import { loadRequest } from '../../store/ducks/repositories/actions';
 
@@ -18,9 +18,10 @@ const ListExample: React.FC = (props) => {
 
   return (
     <View>
-      <FlatList data={repositories.map((repo) => ({ key: repo.name, name: repo.name }))}
-        renderItem={({ item }) => <Text>{item.name}</Text>}>
-      </FlatList>
+      <FlatList
+        data={repositories.map((repo) => ({ key: repo.name, name: repo.name }))}
+        renderItem={({ item }) => <Text>{item.name}</Text>}
+      />
     </View>
   );
 };
